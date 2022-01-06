@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>BDM-EXPLANATION</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ここにサイト説明を入れます">
+<meta name="keywords" content="キーワード１,キーワード２,キーワード３,キーワード４,キーワード５">
+<link rel="stylesheet" href="../css/style_works.css">
+<link rel="stylesheet" href="../css/buttons.css">
+<link rel="stylesheet" href="../css/style_map.css">
+<script src="../js/openclose.js"></script>
+<script src="../js/fixmenu.js"></script>
+<script src="../js/fixmenu_pagetop.js"></script>
+<script src="../js/ddmenu_min.js"></script>
+<script src="../js/d3.js"></script>
+
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<body>
+
+    <header>
+        <h1 id="logo"><a href="../index.html"><img src="../images/original_logo.png" alt="SAMPLE COMPANY"></a></h1>
+    </header>
+    
+	<!--PC用（801px以上端末）メニュー-->
+	<nav id="menubar" class="nav-fix-pos">
+		<ul class="inner">
+			<li><a href="../index.html">HOME<span>ホーム</span></a></li>
+			<li><a href="works.html">Explanation<span>説明</span></a></li>
+			<li><a href="about.html">Table<span>表</span></a></li>
+			<li><a href="recruit.html">Device<span>機器</span></a></li>
+			<li><a href="contact.html">Future Work<span>今後の発展</span></a></li>
+		</ul>
+	</nav>
+
+	<!--小さな端末用（800px以下端末）メニュー-->
+	<nav id="menubar-s">
+		<ul>
+			<li><a href="../index.html">HOME<span>ホーム</span></a></li>
+			<li><a href="works.html">Explanation<span>説明</span></a></li>
+			<li><a href="about.html">Table<span>表</span></a></li>
+			<li><a href="recruit.html">Device<span>機器</span></a></li>
+			<li><a href="contact.html">Future Work<span>今後の発展</span></a></li>
+		</ul>
+	</nav>
+
+	<div id="container">
+
+		<div id="contents">
+		
+		<section id="service">
+		
+		<h2>作成物</h2>
+		
+		<div class="list">
+			<img src="../images/saihu.jpg" alt="">
+			<h4>財布</h4>
+			<p>
+				自動でお札の枚数を判別する。<br>
+				<br>
+				<h4>動機</h4>
+				家計簿を自動的に管理したい。<br>
+				<br>
+
+				<h4>仕様</h4>
+				　　　　　　　　　　　　　　　　　　　◆　お札の出し入れ<br>
+				　　　　　　　　　　　　　　　　　　　◆　箱を閉じると、箱の内部でLEDが点灯し、照度センサを用いてお札の枚数を計測する<br>
+				　　　　　　　　　　　　　　　　　　　◆　当サイトに更新する<br>
+			</p>
+		</div>
+		
+		
+		
+		</section>
+		<!--/#service-->
+		
+	</div>
+	<!--/.inner-->
+
+	</div>
+	<!--/#contents-->
+
+
+</div>
+<!--/#container-->
+
+<p class="nav-fix-pos-pagetop"><a href="#">↑</a></p>
+
+<!--メニュー開閉ボタン-->
+<div id="menubar_hdr" class="close"></div>
+
+<!--メニューの開閉処理-->
+<script>
+open_close("menubar_hdr", "menubar-s");
+</script>
+
+<!--「WORKS」の子メニュー-->
+<script>
+	open_close("menubar_hdr2", "menubar-s2");
+</script>
+
+</body>
+</html>

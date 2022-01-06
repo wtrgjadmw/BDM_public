@@ -1,0 +1,36 @@
+.stock_company {
+    padding: 1rem 2rem;
+    border-bottom: 6px double #000;
+    background: #f4f4f4;
+}
+
+.cp_hr01 {
+	border-width: 1px 0 0 0;
+	border-style: solid;
+	border-color: #43a047;
+}
+
+/*h1タグ*/
+#contents_company h1 {
+	clear: both;
+	margin-bottom: 100px;
+	font-size: 400%;	/*文字サイズ*/
+	text-align: center;	/*文字をセンタリング*/
+	letter-spacing: 0.2em;	/*文字間隔を少し広めにとる指定。通常がいいならこの１行削除。*/
+}
+
+/*h2タグ*/
+#contents_company h2 {
+	clear: both;
+	margin-bottom: 30px;
+	font-size: 200%;	/*文字サイズ*/
+	border-bottom: 1px solid #ccc;	/*下線の幅、線種、色*/
+	padding-left: 3%;		/*左側に空ける余白*/
+	letter-spacing: 0.1em;	/*文字間隔を少し広めにとる指定。通常がいいならこの１行削除。*/
+}
+
+/*段落タグ*/
+#contents_company p {
+	font-size: 150%;		/*文字サイズ*/
+	padding: 0 3% 30px;	/*上、左右、下への余白*/
+}

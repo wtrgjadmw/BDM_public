@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>企業概要</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <link rel="stylesheet" href="../css/style_company.css">
+    <link rel="stylesheet" href="../css/buttons.css">
+
+    <script src="../js/d3.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="../js/companies.js"></script>
+
+    <div id="contents_company">
+        <h1 id="company_name">企業名</h1>
+        <h2 id = "stock_company">企業概要</h2>
+        <div id="company_about">企業概要</div>
+        <br>
+        <h2 id = "stock_company">株価</h2>
+    </div>
+
+    
+    <script>
+        // 企業名の受け取り
+        var query = location.search;
+        var value = query.split('=');
+        company_name = decodeURIComponent(value[1]);
+        console.log(company_name);
+        document.getElementById("company_name").innerHTML = company_name;
+    </script>
+
+    <!-- Create a div where the graph will take place -->
+    <div id="price"></div>
+    <script>
+        const endpoint = "../data/data_URL.json";
+        fetch(endpoint)
+        .then(response => response.json())
+        /* 成功時の処理 */
+        .then(data => {
+            companies_data = data;
+            var i = 0
+            var data_endpoint;
+            for (i = 0; i < companies_data.length; i++) {
+                console.log(companies_data[i]);
+                for (key in companies_data[i]){
+                    console.log(key);
+                    console.log(company_name);
+                    if (key == company_name) {
+                        console.log(key);
+                        data_endpoint = companies_data[i][key];
+                        break;
+                    }
+                }
+            }
+            console.log(data_endpoint);
+
+            // 会社の株価変動のデータの取得
+            fetch(data_endpoint)
+            .then(response => response.json())
+            /* 成功時の処理 */
+            .then(data => {
+                
+                prices = data;  // pricesが株価変動データ
+                console.log(prices); 
+                var company_about = 1;
+                company_about = document.getElementById("company_about");
+                if (prices[0].about != 1) {
+                    company_about.innerHTML = prices[0].about;
+                }
+
+                var timeparser = [];
+                var prices_set = [];
+                for (var i = 0; i <= prices.length - 1; i++) {
+                    var num = prices[i].Date.match(/(.*)-(.*)-(.*)T0(.*):(.*)/);
+                    timeparser = d3.timeParse("%Y-%m-%eT0"+num[4]+":"+num[5]);
+                    prices_set.push(
+                        {
+                            'date':timeparser(prices[i].Date),
+                            'close':prices[i].Close,
+                            'Dolar':prices[i].Dolar
+                        }
+                    );
+                }
+                
+                console.log(prices_set);
+                /*
+                var timeparser = d3.timeParse("%Y-%m-%eT0"+/(.d{1})/+":00:00.000Z");
+                console.log(timeparser);
+                prices_set = prices.map( function(d){    // 標準日付に変換して、新しい配列作成 
+		            return  { date: timeparser(d.Date), close:d.Close, Dolar:d.Dolar };
+                });
+                prices_set_after = prices_set.filter((data) => {return (data.date != null);});
+                console.log(prices_set_after);
+                */
+                graphshow(prices_set)
+                
+            })
+            /* 失敗時にエラーを吐く */
+            .catch(error => {
+                console.error('通信に失敗しました', error);
+            });
+            
+        })
+        /* 失敗時にエラーを吐く */
+        .catch(error => {
+            console.error('通信に失敗しました', error);
+        });
+    </script>
+    <a href="../index.html" class="btn btn-border">HOME</a>
+
+</body>
+
+</html>
